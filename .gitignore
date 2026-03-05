@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+dfns/.env
+
+# Build Output
+dist/
+target/
+test-ledger/
+*.tsbuildinfo
+
+# IDE/System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+service-account/service-account.pemservice-account/sa.txt
+id.json
+real_Cargo.toml

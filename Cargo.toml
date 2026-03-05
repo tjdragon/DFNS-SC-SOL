@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = [
+    "programs/*"
+]
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
+[patch.crates-io]
+# Remove git patch due to authentication issues

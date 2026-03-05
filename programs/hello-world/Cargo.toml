@@ -1,0 +1,23 @@
+[package]
+name = "hello-world"
+version = "0.1.0"
+description = "Simple program for testing deployment"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "hello_world"
+
+[dependencies]
+anchor-lang = "0.30.1"
+
+[features]
+idl-build = ["anchor-lang/idl-build"]
+no-entrypoint = []
+cpi = []
+custom-heap = []
+custom-panic = []
+anchor-debug = []
+no-idl = []
+no-log-ix-name = []
+
