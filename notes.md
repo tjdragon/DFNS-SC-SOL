@@ -5,11 +5,6 @@
 anchor keys sync
 ```
 
-## Using DFNS, we need to generate the anchor_id
-```bash
-node -e 'const bs58 = require("bs58"); console.log(bs58.encode(Buffer.from("e989525794235dbe31ae6e15551b307bf37fcb9c20ccabc007befe05e16ec709", "hex")))'
-```
-
 ## DFNS Sender Details:
 - Address: GidScLu4wK5JJ3CUFRbCPeKbyrMf7SLc2nCTCuoNRqqS
 - Wallet: wa-01jip-s9pis-e1kph66br1k8e5ja
