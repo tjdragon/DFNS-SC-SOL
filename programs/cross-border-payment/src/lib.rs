@@ -43,11 +43,7 @@ pub mod cross_border_payment {
     /// * `ctx` - The context of the instruction.
     /// * `_payment_id` - The ID of the payment being updated (used for PDA derivation).
     /// * `amount_out` - The calculated output amount based on the FX rate.
-    pub fn set_fx_rate(
-        ctx: Context<SetFXRate>,
-        _payment_id: u64,
-        amount_out: u64,
-    ) -> Result<()> {
+    pub fn set_fx_rate(ctx: Context<SetFXRate>, _payment_id: u64, amount_out: u64) -> Result<()> {
         let payment = &mut ctx.accounts.payment;
         // Ensure the payment is in the correct state
         require!(
@@ -71,7 +67,7 @@ pub mod cross_border_payment {
     /// * `_payment_id` - The ID of the payment (used for PDA derivation).
     pub fn execute_payment(ctx: Context<ExecutePayment>, _payment_id: u64) -> Result<()> {
         let payment = &mut ctx.accounts.payment;
-        
+
         // Validation: Verify status and that the signer is the original sender
         require!(
             payment.status == PaymentStatus::FXRateSet,
@@ -164,12 +160,12 @@ pub struct ExecutePayment<'info> {
     pub payment: Account<'info, Payment>,
     #[account(mut)]
     pub sender: Signer<'info>,
-    
+
     #[account(mut)]
     pub ieur_mint: Account<'info, Mint>,
     #[account(mut)]
     pub sender_ieur_ata: Account<'info, TokenAccount>,
-    
+
     #[account(mut)]
     pub iaud_mint: Account<'info, Mint>,
     #[account(
@@ -198,9 +194,9 @@ pub struct Payment {
 /// Lifecycle stages of a payment.
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, Eq)]
 pub enum PaymentStatus {
-    PendingFX,  // Initialized, waiting for rate
-    FXRateSet,  // Rate locked, ready for execution
-    Completed,   // Tokens burned and minted
+    PendingFX, // Initialized, waiting for rate
+    FXRateSet, // Rate locked, ready for execution
+    Completed, // Tokens burned and minted
 }
 
 #[error_code]
